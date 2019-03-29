@@ -10,7 +10,7 @@ using namespace std;
 int Karma = 0;
 int Choice1 = 0;
 int Choice2 = 0;
-int Tracker = 0;
+int Tracker;
 string UserName;
 string UserInput;
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -18,6 +18,7 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 // Declaring Functions
 void Beginnings();
 void GetNameFromUser();
+void GetNumbersFromUser(int Tracker);
 void GetNumbersFromUser1();
 void GetNumbersFromUser2();
 void type_text(const std::string& text);
@@ -25,12 +26,17 @@ void GrowShip();
 void CryoShip();
 void ExploreShip();
 
-void main()
+int main()
+{
+	Beginnings();
+}
+
+void Beginnings() 
 {
 	type_text("Hello, Captain.\n");
 	type_text("How was your sleep?\n\n");
 
-	GetNumbersFromUser1();
+	GetNumbersFromUser(Tracker = 0);
 
 	type_text("\nMy logs on you have become corrupted. Let us take this time to update them.");
 	type_text("\nPlease Enter your name:  ");
@@ -47,11 +53,7 @@ void main()
 	type_text("As the captain, you have the authority and responsibility to decide for the passengers.\n");
 	type_text("What do you want to do?\n\n");
 
-	GetNumbersFromUser2();
-
-
-
-
+	GetNumbersFromUser(Tracker = 1);
 
 	system("pause");
 	return;
@@ -78,62 +80,64 @@ void GetNameFromUser()
 	return;
 }
 
-void GetNumbersFromUser1()
+void GetNumbersFromUser(int Tracker)
 {
-	SetConsoleTextAttribute(hConsole, 14);
-	cout << "1 - 'What?'\n";
-	cout << "2 - 'Good Morning?'\n";
-	cout << "3 - 'Where Am I?'\n\n";
-	SetConsoleTextAttribute(hConsole, 15);
-
-	cin >> Choice1;
-	switch (Choice1)
+	if (Tracker == 0)
 	{
-	case 1:
-		type_text("\nIt seems you have yet to recover your memories. This is a common side effect to cryosleep.");
-		break;
+		SetConsoleTextAttribute(hConsole, 14);
+		cout << "1 - 'What?'\n";
+		cout << "2 - 'Good Morning?'\n";
+		cout << "3 - 'Where Am I?'\n\n";
+		SetConsoleTextAttribute(hConsole, 15);
 
-	case 2:
-		type_text("\nCryosleep is not always the most comfortable of procedures. I am sorry if it was unsettling.");
-		break;
+		cin >> Choice1;
+		switch (Choice1)
+		{
+		case 1:
+			type_text("\nIt seems you have yet to recover your memories. This is a common side effect to cryosleep.");
+			break;
 
-	case 3:
-		type_text("\nYou are on a ship. I have just woken you from cryosleep.");
+		case 2:
+			type_text("\nCryosleep is not always the most comfortable of procedures. I am sorry if it was unsettling.");
+			break;
+
+		case 3:
+			type_text("\nYou are on a ship. I have just woken you from cryosleep.");
+		}
+		Tracker++;
+		return;
 	}
-	return;
+	if (Tracker == 1) {
+
+		SetConsoleTextAttribute(hConsole, 14);
+		cout << "1 - Convert different rooms in the ship for food growing. It will give us less resources when we arrive to the planet but will it matter if we can't get there alive?\n";
+		cout << "2 - Leave half the passengers in cryosleep without powered support. Have our medical team keep tabs on them in case of issues. It will be a tedious, but necessary process.\n";
+		cout << "3 - The food problem is a side effect of the power problem. We should scavenge any asteroid fields in hopes we find some kind of fuel for power.\n\n";
+		SetConsoleTextAttribute(hConsole, 15);
+		cin >> Choice2;
+		switch (Choice2)
+		{
+		case 1:
+			type_text("Very well, I will inform the passengers right away.");
+			//GrowShip();
+			break;
+
+		case 2:
+			type_text("A calculated risk. I will leave half the passengers in cryosleep, prioritizing the least productive.");
+			//CryoShip();
+			break;
+
+		case 3:
+			type_text("Very wise. I will begin local scans now.");
+			//ExploreShip();
+			break;
+		}
+		return;
+	}
 }
 
-void GetNumbersFromUser2()
+void GrowShip()
 {
-
-	SetConsoleTextAttribute(hConsole, 14);
-	cout << "1 - Convert different rooms in the ship for food growing. It will give us less resources when we arrive to the planet but will it matter if we can't get there alive?\n";
-	cout << "2 - Leave half the passengers in cryosleep without powered support. Have our medical team keep tabs on them in case of issues. It will be a tedious, but necessary process.\n";
-	cout << "3 - The food problem is a side effect of the power problem. We should scavenge any asteroid fields in hopes we find some kind of fuel for power.\n\n";
-	SetConsoleTextAttribute(hConsole, 15);
-	cin >> Choice2;
-	switch (Choice2)
-	{
-	case 1:
-		type_text("Very well, I will inform the passengers right away.");
-		//GrowShip();
-		break;
-
-	case 2:
-		type_text("A calculated risk. I will leave half the passengers in cryosleep, prioritizing the least productive.");
-		//CryoShip();
-		break;
-
-	case 3:
-		type_text("Very wise. I will begin local scans now.");
-		//ExploreShip();
-		break;
-	}
-	return;
+	SetConsoleTextAttribute(hConsole, 10);
+	type_text("A few months have passed,");
 }
-
-/*void GrowShip()
-{
-system("Color 0B")
-	type_text("")
-}*/
