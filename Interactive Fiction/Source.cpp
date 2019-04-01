@@ -19,8 +19,6 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 void Beginnings();
 void GetNameFromUser();
 void GetNumbersFromUser(int Tracker);
-void GetNumbersFromUser1();
-void GetNumbersFromUser2();
 void type_text(const std::string& text);
 void GrowShip();
 void CryoShip();
@@ -118,18 +116,18 @@ void GetNumbersFromUser(int Tracker)
 		switch (Choice2)
 		{
 		case 1:
-			type_text("Very well, I will inform the passengers right away.");
-			//GrowShip();
+			type_text("Very well, I will inform the passengers right away.\n");
+			GrowShip();
 			break;
 
 		case 2:
-			type_text("A calculated risk. I will leave half the passengers in cryosleep, prioritizing the least productive.");
-			//CryoShip();
+			type_text("A calculated risk. I will leave half the passengers in cryosleep, prioritizing the least productive.\n");
+			CryoShip();
 			break;
 
 		case 3:
-			type_text("Very wise. I will begin local scans now.");
-			//ExploreShip();
+			type_text("Very wise. I will begin local scans now.\n");
+			ExploreShip();
 			break;
 		}
 		return;
@@ -139,5 +137,33 @@ void GetNumbersFromUser(int Tracker)
 void GrowShip()
 {
 	SetConsoleTextAttribute(hConsole, 10);
-	type_text("A few months have passed,");
+	type_text("\nA few months have passed, and the grow rooms have been successful.\n");
+	type_text("You made it to the planet in one piece, and all of your passengers that you left Earth with have made it here alive.\n");
+	type_text("To be Continued...\n");
+	return;
+}
+
+void CryoShip() {
+	
+	SetConsoleTextAttribute(hConsole, 10);
+	type_text("\nA few days pass as the ship's computer works on deciding which passengers to wake and which to leave in cryosleep.\n");
+	type_text("On the third day you walk the ship and realize it's a little too empty. In fact, since being woken up you haven't seen a single other passenger.\n");
+	type_text("You walk to the massive cryochambers and walk up to the first one you spot.\n");
+	type_text("You put in your captain's credentials to wake up this passenger, but they come up invalid.");
+	type_text("At that point, all the lights go out. You heard an unfamiliar voice. 'Captain...'");
+	type_text("To Be Continued...\n");
+	return;
+}
+
+void ExploreShip() {
+
+	SetConsoleTextAttribute(hConsole, 10);
+	type_text("\nScans pick up a large asteroid field very close to your ships location.\n");
+	type_text("You head straight for it, hoping you find something useful for the journey.\n");
+	type_text("As your ship arrives at the edge of the asteroid space, you pick a group of skilled passengers and send board an escape ship, fully equipped for flight.\n");
+	type_text("As you explore the asteroid field a sense of unease comes over you and your crew.\n");
+	type_text("It's not very far in when you spot a weird blue shimmer surrounding a lot of the asteroids.\n");
+	type_text("You get closer, and that's when you spot structures are built into these asteroids with some kind of shield surrounding them.\n");
+	type_text("To Be Continued...\n");
+	return;
 }
